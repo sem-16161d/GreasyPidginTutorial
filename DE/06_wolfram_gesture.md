@@ -16,17 +16,9 @@ Wir verwenden einen **Wolfram-Elementarautomaten**: eine Zeile von Zellen, von d
 
 Der vollständige Datenfluss:
 
-```{mermaid}
-graph LR
-    A["Ganzzahl 50\n(gen0)"] --> B["CellularAutomaton\nRegel 140, 40 Generationen"]
-    B --> C["generationsToEnvelope\n→ Tonhöhenkurve"]
-    B --> D["concatenateGenerations\n→ Binärer Rhythmus"]
-    C --> E["scale + quantise\n→ pitchSeq (40 Noten)"]
-    D --> F["TimeGrid\n→ Einsatzzeiten"]
-    F --> G["differentiate\n→ deltaTs"]
-    E --> H["Gesture.fromLists"]
-    G --> H
-    H --> I["MIDI-Datei"]
+```{image} IMG/flowchartWolfram.png
+
+:align: center
 ```
 
 Der zelluläre Automat erzeugt **sowohl** die Melodie als auch den Rhythmus aus einer einzigen Quelle — nur auf zwei verschiedene Arten gelesen. Genau das macht die Technik musikalisch kohärent: Tonhöhe und Rhythmus teilen dieselbe zugrundeliegende Struktur.
