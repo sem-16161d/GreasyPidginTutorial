@@ -1,0 +1,44 @@
+version: 1
+
+project:
+  title: How To GreasyPidgin
+  description: Einführung in GreasyPidgin
+  authors:
+    - name: Sem Ribeiro Albuquerque Wendt
+
+  exports:
+    - format: typst
+      template: plain_typst_book
+      output: exports/how-to-greasypidgin.pdf
+      articles:
+        - file: 00_abstract.md
+        - file: 01_installation.md
+        - file: 02_Pitch.md
+        - file: 03_Envelope.md
+        - file: 04_Grid.md
+        - file: 04a_TimeGrid.md
+        - file: 04b_PitchGrid.md
+        - file: 04c_DynamicGrid.md
+        - file: 05_TemporalObject.md
+        - file: 05a_Phonon.md
+        - file: 05b_Gesture.md
+        
+        
+
+
+  toc:
+    - file: 00_abstract.md
+    - file: 01_installation.md
+    - file: 02_Pitch.md
+    - file: 03_Envelope.md
+    - file: 04_Grid.md
+    - file: 04a_TimeGrid.md
+    - file: 04b_PitchGrid.md
+    - file: 04c_DynamicGrid.md
+    - file: 05_TemporalObject.md
+    - file: 05a_Phonon.md
+    - file: 05b_Gesture.md
+
+
+site:
+  template: book-theme
