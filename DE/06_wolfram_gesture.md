@@ -34,7 +34,7 @@ from GreasyPidgin.Normalisation import scale
 from GreasyPidgin import spntom
 from GreasyPidgin.PitchGrid import PitchGrid
 from GreasyPidgin.Gesture import Gesture
-from GreasyPidgin.CellularAutomata import CellularAutomaton, CellularRules, intToBinary
+from GreasyPidgin.CellularAutomata import CellularAutomaton, CellularRules, intToBinary, binaryToInt
 ```
 
 Jeder Import stellt ein Werkzeug bereit:
