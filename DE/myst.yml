@@ -23,8 +23,10 @@ project:
         - file: 05a_Phonon.md
         - file: 05b_Gesture.md
         - file: 06_wolfram_gesture.md
-        
-        
+        - file: 07a_markov_melodie.md
+        - file: 07b_markov_rhythmus.md
+        - file: 07c_markov_intervalle.md
+        - file: 07d_markov_intervalle.md       
 
 
   toc:
@@ -40,6 +42,10 @@ project:
     - file: 05a_Phonon.md
     - file: 05b_Gesture.md
     - file: 06_wolfram_gesture.md
+    - file: 07a_markov_melodie.md
+    - file: 07b_markov_rhythmus.md
+    - file: 07c_markov_intervalle.md
+    - file: 07d_markov_intervalle.md
 
 
 site:
