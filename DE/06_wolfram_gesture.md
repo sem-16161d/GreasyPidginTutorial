@@ -17,7 +17,6 @@ Wir verwenden einen **Wolfram-Elementarautomaten**: eine Zeile von Zellen, von d
 Der vollständige Datenfluss:
 
 ```{image} IMG/flowchartWolfram.png
-
 :align: center
 ```
 

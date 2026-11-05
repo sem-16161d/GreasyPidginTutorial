@@ -55,7 +55,7 @@ Diese erlaubt es zum Beispiel die Frequenzen für *equal distance octave (EDO)* 
 ```python
 from GreasyPidgin.Grid import Grid
 
-print(Grid.geom(442, 2**(1/12), 13, 2))
+print(Grid.geom(442, 2**(1/12), 13, decimals=2))
 
 ##########  OUTPUT  ############################################################
 #> Grid(size=13, range=(442.0, 884.0), preview=[442.0, 468.28, 496.13, 525.63, 556.89, 590.0, 625.08, 662.25, 701.63, 743.35, 787.55, 834.38, 884.0])
