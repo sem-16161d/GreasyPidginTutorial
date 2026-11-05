@@ -53,6 +53,8 @@ _TEXT = {
         "nothing_to_play": "No notes to play.",
         "saved_as": "Saved as {path}",
         "packed": "Packed:",
+        "sonata_range": "The sonata number must be between 1 and 555.",
+        "sonata_download": "Downloading Scarlatti sonata K.{n} ...",
     },
     "de": {
         "not_found": "'{path}' nicht gefunden -> stattdessen wird die Demo-Melodie verwendet.",
@@ -73,6 +75,8 @@ _TEXT = {
         "nothing_to_play": "Keine Noten zum Abspielen.",
         "saved_as": "Gespeichert als {path}",
         "packed": "Eingepackt:",
+        "sonata_range": "Die Sonatennummer muss zwischen 1 und 555 liegen.",
+        "sonata_download": "Lade Scarlatti-Sonate K. {n} herunter ...",
     },
 }
 
@@ -467,6 +471,26 @@ def listen(path: str, engine: str = "auto", max_seconds: float | None = 20.0):
         return None
     display(Audio(synth_midi(path, max_seconds=max_seconds), rate=16000))
     return None
+
+
+def get_scarlatti(number: int, repo: str, ref: str = "main") -> str:
+    """
+    Fetch Scarlatti sonata K.<number> (1-555) from the MATERIAL folder of the tutorial
+    repository on GitHub and return the local file name (e.g. 'scarlatti_k555.mid').
+    """
+    import urllib.parse
+    import urllib.request
+
+    number = int(number)
+    if not 1 <= number <= 555:
+        raise ValueError(_t("sonata_range"))
+    local = f"scarlatti_k{number:03d}.mid"
+    if not os.path.exists(local):
+        print(_t("sonata_download", n=number))
+        name = urllib.parse.quote(f"sonatas_k-{number:03d}_(c)sankey.mid")
+        urllib.request.urlretrieve(
+            f"https://raw.githubusercontent.com/{repo}/{ref}/MATERIAL/SCARLATTI_SONATAS/{name}", local)
+    return local
 
 
 def download(path: str) -> None:
