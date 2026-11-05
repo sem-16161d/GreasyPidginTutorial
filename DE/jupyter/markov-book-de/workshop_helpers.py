@@ -24,8 +24,8 @@ import numpy as np
 
 IN_COLAB = "google.colab" in sys.modules
 
-NOTE_NAMES = ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"]
-NOTE_NAMES_DE = ["C", "Cis", "D", "Es", "E", "F", "Fis", "G", "As", "A", "B", "H"]
+# GreasyPidgin's own spelling (scientific pitch notation): lower case, s = sharp, f = flat
+NOTE_NAMES = ["c", "cs", "d", "ef", "e", "f", "fs", "g", "af", "a", "bf", "b"]
 
 # ---------------------------------------------------------------------------
 # Language ("en" or "de"): set with set_language("de") at the top of a notebook
@@ -78,7 +78,7 @@ _TEXT = {
 
 
 def set_language(lang: str) -> None:
-    """Choose the language of messages, labels and note names: "en" or "de"."""
+    """Choose the language of messages and labels: "en" or "de"."""
     global LANG
     if lang not in _TEXT:
         raise ValueError(f"Unknown language {lang!r}; use 'en' or 'de'.")
@@ -90,9 +90,8 @@ def _t(key: str, **kw) -> str:
 
 
 def pitch_class_name(pc) -> str:
-    """0 -> 'C', 3 -> 'Eb' (English) or 'Es' (German); German also uses H for B natural."""
-    names = NOTE_NAMES_DE if LANG == "de" else NOTE_NAMES
-    return names[int(round(float(pc))) % 12]
+    """0 -> 'c', 3 -> 'ef'. Same spelling in every language (German H is 'b', German B is 'bf')."""
+    return NOTE_NAMES[int(round(float(pc))) % 12]
 
 
 # ---------------------------------------------------------------------------
@@ -100,7 +99,7 @@ def pitch_class_name(pc) -> str:
 # ---------------------------------------------------------------------------
 
 def pitch_name(midi) -> str:
-    """60 -> 'C4'. Non-numbers are returned as text."""
+    """60 -> 'c4', 61 -> 'cs4', 58 -> 'bf3' (the names GreasyPidgin's spntom reads). Non-numbers are returned as text."""
     try:
         m = int(round(float(midi)))
     except (TypeError, ValueError):
