@@ -286,35 +286,6 @@ def load_melody(path: str, track: int | None = None, quantise: float = 0.25) -> 
                   float(g.data.get("bpm", 120.0)), path, track, g)
 
 
-def load_notes(path: str, track: int | None = None, quantise: float = 0.25) -> list:
-    """
-    Read ALL notes of a MIDI file, chords included, as a list of (gap, pitch).
-
-    - gap:   beats since the previous note started (rounded to multiples of
-             `quantise`). 0 means "at the same time", i.e. the note belongs to
-             the same chord as the one before.
-    - order: by start time; inside a chord from the lowest note up.
-    """
-    from GreasyPidgin import Gesture
-
-    if track is None:
-        track = _busiest_track(path)
-
-    with _quiet():
-        g = Gesture.fromMidiFile(path, trackNumber=track)
-
-    notes = sorted({(round(float(ph.startTimeBeats), 3), int(round(p)))
-                    for ph in g.children for p in ph.allPitches})
-    if len(notes) < 4:
-        raise ValueError(_t("too_short", n=len(notes), track=track))
-
-    out = [(0.0, notes[0][1])]
-    for (t0, _), (t1, p1) in zip(notes, notes[1:]):
-        gap = 0.0 if t1 - t0 < 1e-3 else max(quantise, quantise_to(t1 - t0, quantise))
-        out.append((gap, p1))
-    return out
-
-
 # ---------------------------------------------------------------------------
 # Plots
 # ---------------------------------------------------------------------------
