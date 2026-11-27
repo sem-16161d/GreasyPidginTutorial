@@ -1,3 +1,10 @@
+---
+exports:
+  - format: typst
+    template: plain_typst_book
+    output: exports/js-referenz.pdf
+---
+
 (js-referenz)=
 # JavaScript-Referenz (Max 9 / `[v8]`)
 
