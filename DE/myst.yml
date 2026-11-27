@@ -27,6 +27,7 @@ project:
         - file: 07b_markov_rhythmus.md
         - file: 07c_markov_intervalle.md
         - file: 07d_markov_intervalle.md       
+        - file: 08_js_referenz.md
 
 
   toc:
@@ -46,6 +47,7 @@ project:
     - file: 07b_markov_rhythmus.md
     - file: 07c_markov_intervalle.md
     - file: 07d_markov_intervalle.md
+    - file: 08_js_referenz.md
 
 
 site:
